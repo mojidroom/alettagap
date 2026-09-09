@@ -52,7 +52,7 @@ function classifySus(encList) {
 }
 
 // find the tab to scan: explicit id → sender window's active http tab →
-// any normal window's active http tab (covers sidebar, popup windows, dev E2E)
+// any normal window's active http tab (covers sidebar and popup windows)
 const httpRe = /^https?:/i;
 async function resolveTargetTab(explicitId) {
   if (explicitId) {
@@ -222,16 +222,6 @@ api.runtime.onMessage.addListener((msg, sender, sendResponse) => {
 // clicking the toolbar icon opens the native sidebar
 api.browserAction.onClicked.addListener(() => {
   try { api.sidebarAction.open(); } catch (e) {}
-});
-
-// E2E/debug helper: open the panel as a real popup window (moz-extension pages
-// cannot be window.open'd from web content; the extension itself can).
-api.runtime.onMessage.addListener((msg) => {
-  if (msg.type === 'openPanelPopup') {
-    const url = api.runtime.getURL('sidepanel.html');
-    Promise.resolve(api.windows.create({ url, type: 'popup', width: 480, height: 780 }))
-      .then(() => {}).catch(() => {});
-  }
 });
 
 api.tabs.onUpdated.addListener((tabId, info) => {
