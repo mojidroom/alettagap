@@ -1,0 +1,48 @@
+{
+  "manifest_version": 2,
+  "name": "AlettaGAP — Parameter & Endpoint Hunter",
+  "version": "1.1.0",
+  "description": "Passively extract hidden parameters, API endpoints, secrets and wordlists from pages and JS bundles. Sus-param classification, Next.js RSC apiPaths, sourcemap mining, traceable fuzz-value join export.",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "alettagap@mojidroom.dev",
+      "strict_min_version": "91.0"
+    }
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "tabs",
+    "downloads",
+    "clipboardWrite",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "alettgap_lib.js",
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_title": "AlettaGAP panel",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "sidebar_action": {
+    "default_title": "AlettaGAP",
+    "default_panel": "sidepanel.html",
+    "open_at_install": false
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "web_accessible_resources": [
+    "secrets_patterns.json",
+    "params_data.json"
+  ]
+}

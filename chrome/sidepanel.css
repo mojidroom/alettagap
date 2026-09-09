@@ -1,0 +1,87 @@
+:root {
+  --bg: #0e1116; --panel: #161b22; --panel2: #1c2230; --line: #2a3140;
+  --txt: #e6edf3; --dim: #8b949e; --accent: #3fb950; --accent2: #58a6ff;
+  --sus: #f85149; --warn: #d29922; --firm: #3fb950; --tent: #58a6ff;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Consolas, monospace;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--bg); color: var(--txt);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  display: flex; flex-direction: column; overflow: hidden;
+}
+header { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--line); background: var(--panel); }
+.brand { display: flex; align-items: center; gap: 8px; }
+.logo { width: 26px; height: 26px; border-radius: 6px; }
+.title { font-weight: 800; letter-spacing: 1px; color: var(--accent); font-size: 15px; }
+.sub { font-size: 10px; color: var(--dim); margin-top: -2px; }
+.origin { flex: 1; text-align: center; font-family: var(--mono); font-size: 11px; color: var(--dim); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scanbtn {
+  background: var(--accent); color: #04110a; border: 0; border-radius: 7px;
+  font-weight: 800; padding: 8px 16px; cursor: pointer; letter-spacing: .5px;
+}
+.scanbtn:hover { filter: brightness(1.1); }
+.scanbtn:disabled { opacity: .5; cursor: wait; }
+.fuzzbtn { font-family: ui-monospace, monospace; font-size: 10px; padding: 4px 8px; margin: 0 6px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel2); color: var(--dim); cursor: pointer; }
+.fuzzbtn.on { color: #fff; background: #b3261e; border-color: #b3261e; }
+.act.fuzz { border-color: #b3261e; color: #ff8a80; }
+.nodata { padding: 26px 14px; text-align: center; color: var(--dim); font-size: 13px; }
+.toolbar { display: flex; align-items: center; gap: 8px; padding: 8px 12px; border-bottom: 1px solid var(--line); }
+.tabs { display: flex; gap: 4px; flex: 1; flex-wrap: wrap; }
+.tabs button { background: none; border: 1px solid transparent; color: var(--dim); padding: 5px 9px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+.tabs button.active { background: var(--panel2); color: var(--txt); border-color: var(--line); }
+.tabs button:hover { color: var(--txt); }
+.pill { background: var(--line); border-radius: 9px; padding: 0 6px; font-size: 10px; margin-left: 3px; }
+#filter { background: var(--panel2); border: 1px solid var(--line); color: var(--txt); border-radius: 7px; padding: 6px 9px; width: 150px; font-family: var(--mono); }
+.statusbar { font-size: 11px; color: var(--dim); padding: 5px 12px; border-bottom: 1px solid var(--line); background: #10151d; min-height: 24px; }
+.statusbar.busy { color: var(--warn); }
+.statusbar.err { color: var(--sus); }
+main { flex: 1; overflow-y: auto; padding: 8px 10px; }
+.empty { text-align: center; color: var(--dim); padding: 60px 20px; }
+.empty .big { font-size: 44px; opacity: .35; }
+.empty .hint { font-size: 11px; margin-top: 8px; line-height: 1.6; }
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th { text-align: left; color: var(--dim); font-weight: 600; padding: 5px 6px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--bg); font-size: 11px; }
+td { padding: 5px 6px; border-bottom: 1px solid #1a2029; font-family: var(--mono); word-break: break-all; vertical-align: top; }
+tr:hover td { background: #171e29; }
+.name { cursor: copy; }
+.name:hover { color: var(--accent2); text-decoration: underline dotted; }
+.cls { display: inline-block; padding: 1px 7px; border-radius: 9px; font-size: 10px; font-weight: 700; }
+.Firm { background: rgba(63,185,80,.15); color: var(--firm); }
+.Tentative { background: rgba(88,166,255,.14); color: var(--tent); }
+.Sus { background: rgba(248,81,73,.14); color: var(--sus); }
+.suscat { color: var(--warn); font-family: var(--mono); font-size: 10px; }
+.act { font-family: system-ui; font-size: 10px; padding: 2px 8px; border-radius: 6px; border: 1px solid var(--line); background: var(--panel2); color: var(--txt); cursor: pointer; }
+.act:hover { border-color: var(--accent2); }
+.secret-match { color: var(--sus); font-size: 11px; }
+.secret-page { color: var(--dim); font-size: 10px; }
+footer { display: flex; gap: 6px; padding: 8px 12px; border-top: 1px solid var(--line); background: var(--panel); }
+footer button { font-size: 11px; padding: 5px 10px; border-radius: 6px; cursor: pointer; }
+.ghost { background: var(--panel2); color: var(--txt); border: 1px solid var(--line); }
+.ghost:hover { border-color: var(--accent2); }
+.danger { margin-left: auto; background: none; color: var(--sus); border: 1px solid transparent; }
+.danger:hover { border-color: var(--sus); }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-thumb { background: var(--line); border-radius: 4px; }
+
+.joinbox { border-top: 1px solid var(--border); padding: 8px 10px; background: var(--bg2, #0d1117); }
+.joinbox .fuzzlabel { color: var(--dim); font-size: 11px; margin-bottom: 4px; }
+.joinbox .fuzzurl { display: block; word-break: break-all; font-size: 11px; color: var(--accent, #58a6ff);
+  background: #161b22; padding: 6px; border-radius: 4px; margin-bottom: 6px; max-height: 84px; overflow: auto; cursor: copy; }
+.joinbtns { display: flex; gap: 6px; }
+.joinbtns .ghost { margin-left: auto; }
+
+.copyall { background: #21262d; color: var(--fg, #e6edf3); border: 1px solid var(--border, #30363d);
+  border-radius: 4px; padding: 4px 10px; font-size: 12px; cursor: pointer; white-space: nowrap; }
+.copyall:hover { border-color: var(--accent, #58a6ff); }
+
+.modes { display: flex; gap: 8px; font-size: 11px; color: var(--dim, #8b949e); }
+.modes label { display: flex; align-items: center; gap: 2px; cursor: pointer; white-space: nowrap; }
+
+.meths { white-space: nowrap; }
+.mchip { display:inline-block; padding:0 5px; margin:1px; border-radius:3px; font-size:10px; font-weight:600; background:#30363d; color:#8b949e; }
+.mchip.get { background:#1f6feb33; color:#79c0ff; }
+.mchip.post { background:#23863633; color:#56d364; }
+.mchip.put, .mchip.patch { background:#9e6a0333; color:#e3b341; }
+.mchip.delete { background:#da363333; color:#f85149; }

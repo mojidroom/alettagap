@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AlettaGAP</title>
+<link rel="stylesheet" href="sidepanel.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img src="icons/icon48.png" alt="" class="logo">
+    <div>
+      <div class="title">AlettaGAP</div>
+      <div class="sub">param &amp; endpoint hunter</div>
+    </div>
+  </div>
+  <div class="origin" id="origin">—</div>
+    <div class="modes" title="GAP modes — what to extract on scan">
+    <label><input type="checkbox" id="m-params" checked>Params</label>
+    <label><input type="checkbox" id="m-links" checked>Links</label>
+    <label><input type="checkbox" id="m-words" checked>Words</label>
+  </div>
+  <button class="scanbtn" id="scan">SCAN</button>
+</header>
+
+<div class="toolbar">
+  <div class="tabs" id="tabs">
+    <button data-tab="params" class="active">Params <span id="c-params" class="pill">0</span></button>
+    <button data-tab="endpoints">Endpoints <span id="c-endpoints" class="pill">0</span></button>
+    <button data-tab="secrets">Secrets <span id="c-secrets" class="pill">0</span></button>
+    <button data-tab="wordlist">Word <span id="c-words" class="pill">0</span></button>
+  </div>
+  <input type="search" id="filter" placeholder="filter… (type to narrow)">
+  <button class="copyall" id="copyall" title="copy every visible item of this tab">copy all</button>
+</div>
+
+<div class="statusbar" id="status">idle — hit SCAN on any http(s) page</div>
+
+<main id="main">
+  <div class="empty" id="empty">
+    <div class="big">⌕</div>
+    <p id="empty-msg">No scan data yet.</p>
+    <p class="hint">Open a target page, then hit <b>SCAN</b>.<br>
+      Params, endpoints and secrets are extracted from the DOM,<br>
+      all JS files and any sourcemaps found.</p>
+  </div>
+  <div id="content"></div>
+</main>
+
+<div class="joinbox" id="joinbox" style="display:none">
+  <div class="fuzzlabel">all params joined with <b>&amp;</b> + random values <span id="join-count"></span></div>
+  <code class="fuzzurl" id="join-url" data-copy="">—</code>
+  <div class="joinbtns">
+    <button class="act fuzz" id="join-copy">copy</button>
+    <button class="act" id="join-open">open</button>
+    <button class="act fuzz" id="join-refresh">reroll values</button>
+    <button class="ghost" id="join-save">save .txt</button>
+  </div>
+</div>
+
+<footer>
+  <button id="exp-params" class="ghost">export params</button>
+  <button id="exp-endpoints" class="ghost">export endpoints</button>
+  <button id="exp-wordlist" class="ghost">export wordlist</button>
+  <button id="clear" class="danger">clear</button>
+</footer>
+
+<script src="sidepanel.js"></script>
+</body>
+</html>
